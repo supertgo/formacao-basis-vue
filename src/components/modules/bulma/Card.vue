@@ -8,15 +8,15 @@
             </figure>
         </div>
         <div class="media-content">
-            <p class="title is-5">{{nome}}</p>
-            <p class="subtitle is-6">{{preco}}</p>
+            <p class="title is-5">{{produto.nome}}</p>
+            <p class="subtitle is-6">{{produto.preco}}</p>
         </div>
         </div>
 
         <div class="content">
-            {{descricao}}
+            {{produto.descricao}}
             <div>
-                <button class="button is-info is-outlined is-small">Comprar</button>
+                <button class="button is-info is-outlined is-small" @click="adicionarItensCarrinho(produto)">Comprar</button>
             </div>
         <br>
         </div>
@@ -25,10 +25,7 @@
 </template>
 <script>
 export default {
-    props: ['imagem', 'nome', 'descricao', 'preco'],
-    setup() {
-        
-    },
+    props: ['produto', 'adicionarItensCarrinho']
 }
 </script>
 <style scoped>

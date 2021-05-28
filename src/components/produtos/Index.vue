@@ -2,10 +2,13 @@
     <section>
             <div class="card-container">
                 <div v-for="(produto, indice) in state.produtos" :key="indice" class="card-content">
-                    <ComponetCar :nome="produto.nome" :descricao="produto.descricao" :preco="produto.preco" class="card" />
+                    <CompontenteCard 
+                        :produto="produto" 
+                        :adicionarItensCarrinho="adicionarItensCarrinho"
+                        class="card" />
                 </div>
             </div>
-            
+            {{getState.itensAdicionadosCarrinho}}
     </section>
 </template>
 
@@ -13,16 +16,20 @@
 import { getState } from '@/store'
 import { reactive } from '@vue/reactivity'
 import { watch } from '@vue/runtime-core'
-import ComponetCar from '../modules/bulma/Card'
+import CompontenteCard from '../modules/bulma/Card'
 
 export default {
     components: {
-        ComponetCar
+        CompontenteCard
     },
     setup() {
         const state = reactive({
             produtos: getState.produtos
         })
+
+        const adicionarItensCarrinho = (produto) => {
+            getState.itensAdicionadosCarrinho.push(produto)
+        }
 
         watch(
             () => getState.resultadoPesquisaProduto,
@@ -34,7 +41,8 @@ export default {
 
         return {
             getState,
-            state
+            state,
+            adicionarItensCarrinho
         }
 
     }

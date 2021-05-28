@@ -43,7 +43,8 @@ const getState = reactive ({
             descricao: 'Lapizeira para texto'
         }                                                                        
     ],
-    resultadoPesquisaProduto: ''
+    resultadoPesquisaProduto: '',
+    itensAdicionadosCarrinho: []
 })
 
 const setState = (propriedade, valor)  => {
