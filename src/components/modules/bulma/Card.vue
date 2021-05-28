@@ -1,0 +1,44 @@
+<template>
+    <div class="card">
+    <div class="card-content">
+        <div class="media">
+        <div class="media-left">
+            <figure class="image is-48x48">
+            <img :src="imagem || 'https://bulma.io/images/placeholders/96x96.png'" alt="Placeholder image">
+            </figure>
+        </div>
+        <div class="media-content">
+            <p class="title is-5">{{nome}}</p>
+            <p class="subtitle is-6">{{preco}}</p>
+        </div>
+        </div>
+
+        <div class="content">
+            {{descricao}}
+            <div>
+                <button class="button is-info is-outlined is-small">Comprar</button>
+            </div>
+        <br>
+        </div>
+    </div>
+    </div>    
+</template>
+<script>
+export default {
+    props: ['imagem', 'nome', 'descricao', 'preco'],
+    setup() {
+        
+    },
+}
+</script>
+<style scoped>
+    .card {
+        width: 15em;
+        box-shadow: #ccc 0px 1px 0px 2px;
+        height: 12em;
+    }
+    button {
+        float: right;
+        margin-top: .7em;
+    }
+</style>
