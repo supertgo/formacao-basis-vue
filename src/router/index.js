@@ -10,6 +10,10 @@ const routes = [
     path: '/carrinho',
     name: 'carrinho',
     component: () => import('../components/cabecalho/carrinho/Index.vue')
+  },
+  {
+    path: '/teste',
+    component: () => import('../components/Teste.vue')
   }
 ]
 
