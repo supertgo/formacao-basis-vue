@@ -9,7 +9,7 @@
 
 <script>
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiCartOutline } from '@mdi/js'
+import { mdiCartOutline, mdiAccountArrowLeft } from '@mdi/js';
 import { getState } from '@/store'
 
 export default {
@@ -25,6 +25,7 @@ export default {
         return {
             SvgIcon,
             mdiCartOutline,
+            mdiAccountArrowLeft,
             getState
         }
     }

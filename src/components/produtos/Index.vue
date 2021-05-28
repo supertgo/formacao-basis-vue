@@ -33,9 +33,11 @@ export default {
 
         watch(
             () => getState.resultadoPesquisaProduto,
-            (atual, anterior) => {
-                console.log(atual, anterior)
-                state.produtos = getState.produtos.filter(produto => produto.nome.toLowerCase().indexOf(atual.toLowerCase()) >= 0)
+            (resultadoPesquisaProduto) => {
+
+                state.produtos = getState.produtos.filter(produto => {
+                    return produto.nome.toLowerCase().indexOf(resultadoPesquisaProduto.toLowerCase()) >= 0
+                })
             }
         )
 
@@ -60,12 +62,5 @@ export default {
     }
     .card-content {
         margin: -8px;
-    }
-
-    .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-    }
-    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
     }
 </style>

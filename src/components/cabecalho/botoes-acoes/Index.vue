@@ -27,9 +27,8 @@ export default {
 
         watch(
             () => state.nomeProduto,
-            (atual, anterior) => {
-                console.log(atual, anterior)
-                setState('resultadoPesquisaProduto', atual)
+            (nomeProduto) => {
+                setState('resultadoPesquisaProduto', nomeProduto)
             }
         )
 
