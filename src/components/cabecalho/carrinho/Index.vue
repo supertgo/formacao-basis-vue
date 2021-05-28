@@ -1,6 +1,9 @@
 <template>
     <div>
         <svgIcon type="mdi" :path="mdiCartOutline" size=40 />
+        <div class="quantidade-itens-carrinho">
+            <span>3</span>
+        </div>
     </div>
 </template>
 
@@ -20,3 +23,12 @@ export default {
     },
 }
 </script>
+
+<style scoped>
+    .quantidade-itens-carrinho {
+    
+    }
+    .quantidade-itens-carrinho span {
+        
+    }
+</style>
