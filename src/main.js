@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import SvgIcon from '@jamescoyle/vue-icon'
 
-createApp(App).use(router).mount('#app')
+createApp(App).component('material-icon', SvgIcon).use(router).mount('#app')

@@ -1,10 +1,11 @@
 <template>
     <div class="card">
+        <Notificacao v-if="state.alertaNotificacao" />
         <div class="card-content">
             <div class="media">
                 <div class="media-left">
                     <figure class="image is-48x48">
-                    <img :src="imagem || 'https://bulma.io/images/placeholders/96x96.png'" alt="Placeholder image">
+                    <img :src="produto.imagem || 'https://bulma.io/images/placeholders/96x96.png'" alt="Placeholder image">
                     </figure>
                 </div>
                 <div class="media-content">
@@ -16,22 +17,49 @@
             <div class="content">
                 <p>{{produto.descricao}}</p>
                 <div>
-                    <button class="button is-info is-outlined is-small" @click="adicionarItensCarrinho(produto)">Comprar</button>
+                    <button class="button is-info is-outlined is-small" @click="enviarItemCarrinho(produto)">Comprar</button>
                 </div>
             </div>
         </div>
     </div>    
 </template>
 <script>
+import { reactive } from '@vue/reactivity'
+import Notificacao from './Notificacao'
+
 export default {
-    props: ['produto', 'adicionarItensCarrinho']
+    props: ['produto', 'adicionarItensCarrinho'],
+    components: {
+        Notificacao
+    },
+    setup (props) {
+        const state = reactive({
+            alertaNotificacao: false
+        })
+
+        const enviarItemCarrinho = (produto) => {
+            setNotificacao()
+            props.adicionarItensCarrinho(produto)
+        }
+        const setNotificacao = () => {
+            state.alertaNotificacao = true
+            setTimeout(() => {
+                state.alertaNotificacao = false
+            }, 3000)
+        }
+
+        return {
+            enviarItemCarrinho,
+            state
+        }
+    }
 }
 </script>
 <style scoped>
     .card {
         width: 15em;
         box-shadow: #ccc 0px 1px 0px 2px;
-        height: 14em;
+        min-height: 14em;
     }
     button {
         float: right;
@@ -45,6 +73,6 @@ export default {
         flex-direction: column;
         justify-content: space-between;
         height: 100%;
-        padding: 1em; 
+        padding: 1em;
     }
 </style>

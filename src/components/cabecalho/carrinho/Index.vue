@@ -1,9 +1,12 @@
 <template>
     <div>
-        <svgIcon type="mdi" :path="mdiCartOutline" size=40 />
-        <div class="quantidade-itens-carrinho">
-            <span>{{totalItensCarrinho}}</span>
-        </div>
+        <span @click="state.exibirItensCarrinho = !state.exibirItensCarrinho">
+            <svgIcon type="mdi" :path="mdiCartOutline" size=40 />
+            <div class="quantidade-itens-carrinho">{{getState.itensAdicionadosCarrinho.length}}</div>
+        </span>
+        <transition name="fade">
+            <ItensCarrinho :produtos="getState.itensAdicionadosCarrinho" v-if="state.exibirItensCarrinho" />
+        </transition>    
     </div>
 </template>
 
@@ -11,10 +14,13 @@
 import SvgIcon from '@jamescoyle/vue-icon'
 import { mdiCartOutline, mdiAccountArrowLeft } from '@mdi/js';
 import { getState } from '@/store'
+import ItensCarrinho from '../../modules/bulma/ItensCarrinho'
+import { reactive } from '@vue/reactivity';
 
 export default {
     components: {
-        SvgIcon
+        SvgIcon,
+        ItensCarrinho
     },
     computed: {
         totalItensCarrinho: () => {
@@ -22,11 +28,17 @@ export default {
         }
     },    
     setup() {
+        const state = reactive({
+            exibirItensCarrinho: false
+        })
+
         return {
             SvgIcon,
             mdiCartOutline,
             mdiAccountArrowLeft,
-            getState
+            getState,
+            state
+            
         }
     }
 }
@@ -49,5 +61,8 @@ export default {
     }
     .quantidade-itens-carrinho span {
 
+    }
+    span:hover {
+        cursor: pointer;
     }
 </style>

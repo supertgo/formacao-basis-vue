@@ -4,8 +4,8 @@
                     <input class="input is-info" type="text" placeholder="Pesquisar produto" v-model="state.nomeProduto">
                 </div>
                 <div class="botoes-acoes">
-                    <button class="button is-normal">Cadastro</button>
-                    <button class="button is-normal">Login</button>
+                    <button class="button is-normal" @click="$router.push({ name: 'cadastro' })">Cadastro</button>
+                    <button class="button is-normal" @click="$router.push({ name: 'login' })">Login</button>
                     <Carrinho class="carrinho"/>
                 </div>
             </section>            
