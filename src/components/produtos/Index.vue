@@ -8,12 +8,11 @@
                         class="card" />
                 </div>
             </div>
-            {{getState.itensAdicionadosCarrinho}}
     </section>
 </template>
 
 <script>
-import { getState } from '@/store'
+import { getState, setItensCarrinho } from '@/store'
 import { reactive } from '@vue/reactivity'
 import { watch } from '@vue/runtime-core'
 import CompontenteCard from '../modules/bulma/Card'
@@ -28,7 +27,7 @@ export default {
         })
 
         const adicionarItensCarrinho = (produto) => {
-            getState.itensAdicionadosCarrinho.push(produto)
+            setItensCarrinho(produto)
         }
 
         watch(
@@ -44,7 +43,8 @@ export default {
         return {
             getState,
             state,
-            adicionarItensCarrinho
+            adicionarItensCarrinho,
+            setItensCarrinho
         }
 
     }
@@ -59,6 +59,7 @@ export default {
     .card-container {
         display: flex;
         flex-wrap: wrap;
+        justify-content: center;
     }
     .card-content {
         margin: -8px;

@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: () => import('../components/home/Index.vue')
   },
   {
@@ -12,9 +12,15 @@ const routes = [
     component: () => import('../components/cabecalho/carrinho/Index.vue')
   },
   {
-    path: '/teste',
-    component: () => import('../components/Teste.vue')
-  }
+    path: '/login',
+    name: 'login',
+    component: () => import('../components/login/Index.vue')
+  },
+  {
+    path: '/cadastro',
+    name: 'cadastro',
+    component: () => import('../components/cadastro/Index.vue')
+  }  
 ]
 
 const router = createRouter({

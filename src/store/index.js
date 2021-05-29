@@ -51,7 +51,17 @@ const setState = (propriedade, valor)  => {
     getState[propriedade] = valor
 }
 
+const setItensCarrinho = (produto)  => {
+    getState.itensAdicionadosCarrinho.push(produto)
+}
+
+const removeItensCarrinho = (indice) => {
+    getState.itensAdicionadosCarrinho.splice(indice, 1)
+}
+
 export {
     getState,
-    setState
+    setState,
+    setItensCarrinho,
+    removeItensCarrinho
 }
